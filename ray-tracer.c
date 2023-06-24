@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include "vec3.h"
 
 #define COLORSPACE 255
 
@@ -14,21 +15,14 @@ int main(int argc, char *argv[]) {
 
   for (int j = height - 1; j >= 0; --j) {
     for (int i = 0; i < width; ++i) {
-      
-      float r_raw = (float) i/(width-1);
-      float g_raw = (float) j/(height-1);
-      float b_raw = (float) 0.25;
-
-      int r_render = r_raw * 255.999;
-      int g_render = g_raw * 255.999;
-      int b_render = b_raw * 255.999;
-
-      printf("%d %d %d\n", r_render, g_render, b_render);
-
+      Color3 pixel = {
+        (float)i / (width-1),
+        (float)j / (height-1),
+        0.25f
+      };
+      Color3_writePixel(pixel);
     }
-    fprintf(stderr, "Completed scanline %d of %d.\n", height - j + 1, height);
+    fprintf(stderr, "Completed scanline %d of %d.\n", height - j, height);
   }
-
   return 0;
-
 }
