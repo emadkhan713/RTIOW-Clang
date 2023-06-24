@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
       printf("%d %d %d\n", r_render, g_render, b_render);
 
     }
+    fprintf(stderr, "Completed scanline %d of %d.\n", height - j + 1, height);
   }
 
   return 0;
