@@ -23,7 +23,7 @@ Vec3 Vec3_add(int num, ...) {
   return result;
 }
 
-Vec3 Vec3_scalarM(Vec3 vec, float scalar) {
+Vec3 Vec3_scalarM(float scalar, Vec3 vec) {
   Vec3 result = {
     vec.x * scalar,
     vec.y * scalar,
@@ -58,7 +58,7 @@ Point Point_cross(Point me, Point other) {
 }
 
 Point Point_norm(Point vec) {
-  Point result = Vec3_scalarM(vec, (float)1/Vec3_len(vec));
+  Point result = Vec3_scalarM((float)1/Vec3_len(vec), vec);
   return result;
 }
 

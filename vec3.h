@@ -10,7 +10,7 @@ typedef struct {
 } Vec3;
 
 Vec3 Vec3_add(int num, ...);
-Vec3 Vec3_scalarM(Vec3 vec, float scalar);
+Vec3 Vec3_scalarM(float scalar, Vec3 vec);
 float Vec3_len_sqd(Vec3 vec);
 float Vec3_len(Vec3 vec);
 void Vec3_print(Vec3 input);

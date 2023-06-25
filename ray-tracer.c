@@ -8,9 +8,9 @@ Color3 Ray_color(Ray r) {
   float t = 0.5f * (dir_norm.y + 1.0f);
   Color3 top = {1.0f, 1.0f, 1.0f};
   Color3 bottom = {0.5f, 0.7f, 1.0f};
-  return Vec3_add(
-    Vec3_scalarM(top, 1.0f - t),
-    Vec3_scalarM(bottom, t)
+  return Vec3_add(2,
+    Vec3_scalarM(1.0f - t, top),
+    Vec3_scalarM(t, bottom)
   );
 }
 
@@ -30,9 +30,11 @@ int main(int argc, char *argv[]) {
   Vec3  horizontal = {v_width, 0, 0};
   Vec3  vertical   = {0, v_height, 0};
   Vec3  focal_vec  = {0, 0, focal_len};
-  Point l_l_corner = Vec3_add(
-    Vec3_scalarM(Vec3_add(Vec3_scalarM(Vec3_add(horizontal, vertical), 0.5f), focal_vec), -1),
-    origin
+  Point l_l_corner = Vec3_add(4,
+    origin,
+    Vec3_scalarM(-0.5f, horizontal),
+    Vec3_scalarM(-0.5f, vertical),
+    Vec3_scalarM(-1, focal_vec)
   );
 
   // Render
@@ -44,15 +46,11 @@ int main(int argc, char *argv[]) {
       float v = (float)j / (height-1);
       Ray r = {
         origin,
-        Vec3_add(
-          Vec3_add(
-            Vec3_add(
-              Vec3_scalarM(horizontal, u),
-              Vec3_scalarM(vertical, v)
-            ),
-            l_l_corner
-          ), 
-          Vec3_scalarM(origin, -1)
+        Vec3_add(4,
+          l_l_corner,
+          Vec3_scalarM(u, horizontal),
+          Vec3_scalarM(v, vertical),
+          Vec3_scalarM(-1, origin)
         )
       };
       Color3 pixel = Ray_color(r);
