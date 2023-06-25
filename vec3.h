@@ -1,6 +1,8 @@
 #ifndef VEC3_H
 #define VEC3_H
 
+#define COLORSPACE 255
+
 typedef struct {
   float x, y, z;
 } Vec3;
