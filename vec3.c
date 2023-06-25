@@ -1,13 +1,25 @@
 #include <stdio.h>
+#include <stdarg.h>
 #include <math.h>
 #include "vec3.h"
 
-Vec3 Vec3_add(Vec3 me, Vec3 other) {
-  Vec3 result = {
-    me.x + other.x,
-    me.y + other.y,
-    me.z + other.z
-  };
+Vec3 Vec3_add(int num, ...) {
+  va_list ap;
+  va_start(ap, num);
+
+  Vec3 first = va_arg(ap, Vec3);
+  float x = first.x;
+  float y = first.y;
+  float z = first.z;
+
+  for (int i = 1; i < num; i++) {
+    Vec3 other = va_arg(ap, Vec3);
+    x += other.x;
+    y += other.y;
+    z += other.z;
+  }
+  va_end(ap);
+  Vec3 result = {x, y, z};
   return result;
 }
 

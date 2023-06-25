@@ -1,13 +1,15 @@
 #ifndef VEC3_H
 #define VEC3_H
 
+#include <stdarg.h>
+
 #define COLORSPACE 255
 
 typedef struct {
   float x, y, z;
 } Vec3;
 
-Vec3 Vec3_add(Vec3 me, Vec3 other);
+Vec3 Vec3_add(int num, ...);
 Vec3 Vec3_scalarM(Vec3 vec, float scalar);
 float Vec3_len_sqd(Vec3 vec);
 float Vec3_len(Vec3 vec);
