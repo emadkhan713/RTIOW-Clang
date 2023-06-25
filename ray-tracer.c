@@ -59,13 +59,13 @@ Color3 Ray_color(Ray r) {
 int main(int argc, char *argv[]) {
 
   // Image
-  const float aspect_ratio = 16.0f / 9;
+  const float aspect_ratio = 16.0f / 9.0f;
   const int width = 400;
   const int height = width / aspect_ratio;
 
   // Camera
-  const int v_height = 2;
-  const int v_width = v_height * aspect_ratio;
+  const float v_height = 2;
+  const float v_width = v_height * aspect_ratio;
   const float focal_len = 1.0f;
 
   Point origin = {0, 0, 0};
