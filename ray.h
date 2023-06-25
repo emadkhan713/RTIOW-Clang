@@ -7,6 +7,6 @@ typedef struct {
   Vec3 dir;
 } Ray;
 
-Point  Ray_at(Ray r, float time);
+Point Ray_at(Ray r, float time);
 
 #endif
